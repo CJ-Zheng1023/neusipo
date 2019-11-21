@@ -4,8 +4,6 @@ import com.neusoft.neusipo.core.message.rocketmq.AbstractMQProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 
 /**
  * @description: rocketmq消息生产者
@@ -13,6 +11,6 @@ import javax.annotation.PreDestroy;
  * @create: 2019-09-02 16:30
  **/
 @Slf4j
-/*@Component*/
+@Component
 public class CustomMQProducer extends AbstractMQProducer {
 }
