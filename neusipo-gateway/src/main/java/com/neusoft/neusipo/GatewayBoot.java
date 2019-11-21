@@ -16,7 +16,6 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 @SpringBootApplication
 @EnableFeignClients
 @EnableZuulProxy
-@EnableCaching
 public class GatewayBoot {
     public static void main(String[] args) {
         SpringApplication.run(GatewayBoot.class, args);

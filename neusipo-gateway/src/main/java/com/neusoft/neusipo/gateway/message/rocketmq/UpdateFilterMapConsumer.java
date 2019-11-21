@@ -18,7 +18,7 @@ import javax.annotation.PreDestroy;
  * @create: 2019-09-02 13:13
  **/
 @Slf4j
-@Component
+/*@Component*/
 public class UpdateFilterMapConsumer extends AbstractMQConsumer {
     @Autowired
     AuthService authService;

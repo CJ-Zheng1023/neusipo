@@ -5,6 +5,7 @@ import com.neusoft.neusipo.common.vo.UserInfo;
 import com.neusoft.neusipo.core.base.Response;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +17,14 @@ import java.util.List;
  * @author: zhengchj
  * @create: 2019-11-02 11:58
  **/
-@FeignClient(value = "neusipo-admin", fallbackFactory = AuthClientFallbackFactory.class)
+@FeignClient(value = "neusipo-admin")
 public interface AuthClient {
     @GetMapping("/auth/load/user")
     Response<UserInfo> loadByUsername(@RequestParam("username") String username);
     @GetMapping("/auth/load/roles")
     Response<List<RoleInfo>> loadRoles();
 }
-@Slf4j
+/*@Slf4j
 @Component
 class AuthClientFallbackFactory implements FallbackFactory<AuthClient>{
 
@@ -42,4 +43,4 @@ class AuthClientFallbackFactory implements FallbackFactory<AuthClient>{
             }
         };
     }
-}
+}*/

@@ -5,7 +5,7 @@ import com.neusoft.neusipo.admin.entity.User;
 import com.neusoft.neusipo.admin.repository.UserRepository;
 import com.neusoft.neusipo.admin.service.UserService;
 import com.neusoft.neusipo.common.vo.UserInfo;
-import com.neusoft.neusipo.core.annotation.Excution;
+import com.neusoft.neusipo.core.annotation.Execution;
 import com.neusoft.neusipo.core.base.BaseServiceSupport;
 import com.neusoft.neusipo.core.base.Response;
 import com.neusoft.neusipo.core.exception.SystemException;
@@ -27,7 +27,7 @@ public class UserServiceImpl extends BaseServiceSupport<User, String, UserReposi
      * @return
      */
     @Override
-    @Excution(logCode = "10001")
+    @Execution(logCode = "10001")
     public Response<String> login(String username, String password) {
         User user = repository.findByUsername(username);
         if(user == null){
@@ -53,7 +53,7 @@ public class UserServiceImpl extends BaseServiceSupport<User, String, UserReposi
      * @return
      */
     @Override
-    @Excution(logCode = "10002")
+    @Execution(logCode = "10002")
     public UserInfo loadByUsername(String username) {
         User user = repository.findByUsername(username);
         if(user == null){
