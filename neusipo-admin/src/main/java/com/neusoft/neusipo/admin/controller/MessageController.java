@@ -25,7 +25,8 @@ public class MessageController {
         producer.asyncSend(topic, "这是一条注入发送的消息");
     }
     @GetMapping("/test2")
-    @SendMessage(topic = "topic1", message = "这是一条注解发送的消息")
+    @SendMessage(topic = "${topic.update.filter.map}", message = "这是一条注解发送的消息")
+    /*@SendMessage(topic = "neusipo-update-filter", message = "这是一条注解发送的消息")*/
     public void test2(){
     }
 }
