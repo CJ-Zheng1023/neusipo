@@ -25,24 +25,18 @@ import java.nio.charset.Charset;
 @Slf4j
 public class CustomFallbackProvider implements FallbackProvider {
     @Override
-    public ClientHttpResponse fallbackResponse(Throwable cause) {
-        log.error(cause.getMessage());
-        if (cause instanceof HystrixTimeoutException) {
-            return response(HttpStatus.GATEWAY_TIMEOUT);
-        } else {
-            return this.fallbackResponse();
-        }
-    }
-
-    @Override
     public String getRoute() {
         // 为所有服务提供退回
         return "*";
     }
-
     @Override
-    public ClientHttpResponse fallbackResponse() {
-        return this.response(HttpStatus.SERVICE_UNAVAILABLE);
+    public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
+        log.error(cause.getMessage());
+        if (cause instanceof HystrixTimeoutException) {
+            return response(HttpStatus.GATEWAY_TIMEOUT);
+        } else {
+            return response(HttpStatus.SERVICE_UNAVAILABLE);
+        }
     }
 
     private ClientHttpResponse response(final HttpStatus status) {

@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @description: 业务接口，提供基本增删改查接口
@@ -15,7 +16,7 @@ import java.util.List;
 
 
 public interface BaseService<T, ID extends Serializable> {
-    T queryById(ID id);
+    Optional<T> queryById(ID id);
     List<T> queryListBySort(String sortField, String sortType);
     Page<T> queryListByPage(int index, int size, String sortField, String sortType);
     T save(T t);

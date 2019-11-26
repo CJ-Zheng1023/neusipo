@@ -18,7 +18,7 @@ public class BaseController<T, ID extends Serializable, S extends BaseService<T,
     protected S service;
     @GetMapping("/query/{id}")
     public Optional<T> queryById(@PathVariable("id") ID id){
-        return Optional.ofNullable(service.queryById(id));
+        return service.queryById(id);
     }
     @GetMapping("/list/sort")
     public List<T> queryListBySort(@RequestParam(defaultValue = "id", required = false) String sortField,

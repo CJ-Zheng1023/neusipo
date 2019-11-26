@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @description: 业务接口实现，提供基本正删改查实现
@@ -23,7 +24,7 @@ public class BaseServiceSupport<T, ID extends Serializable, R extends BaseReposi
      * @param id
      * @return
      */
-    public T queryById(ID id){
+    public Optional<T> queryById(ID id){
         return repository.findById(id);
     }
 
@@ -69,7 +70,7 @@ public class BaseServiceSupport<T, ID extends Serializable, R extends BaseReposi
     @Transactional
     public void delete(List<ID> ids){
         for(ID id : ids){
-            repository.delete(id);
+            repository.deleteById(id);
         }
     }
 

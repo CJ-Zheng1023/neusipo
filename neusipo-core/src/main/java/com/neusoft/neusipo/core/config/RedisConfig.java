@@ -8,7 +8,9 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -16,6 +18,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,10 +30,12 @@ import java.util.List;
 @Configuration
 public class RedisConfig extends CachingConfigurerSupport {
     @Bean
-    public CacheManager cacheManager(RedisTemplate redisTemplate) {
-        RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
-        cacheManager.setDefaultExpiration(24*3600);
-        return cacheManager;
+    public CacheManager cacheManager(RedisConnectionFactory factory) {
+        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofDays(1)); // 设置缓存有效期一一天
+        return RedisCacheManager
+                .builder(RedisCacheWriter.nonLockingRedisCacheWriter(factory))
+                .cacheDefaults(redisCacheConfiguration).build();
     }
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory){
