@@ -42,10 +42,6 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-client</artifactId>
-        </dependency>
-        <dependency>
             <artifactId>neusipo-common</artifactId>
             <groupId>com.neusoft</groupId>
         </dependency>

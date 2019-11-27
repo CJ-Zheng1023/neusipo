@@ -48,7 +48,8 @@ public class BaseServiceSupport<T, ID extends Serializable, R extends BaseReposi
      * @return
      */
     public Page<T> queryListByPage(int index, int size, String sortField, String sortType){
-        PageRequest pageRequest = new PageRequest(index, size, new Sort(getSortDirection(sortType), sortField));
+        PageRequest pageRequest = PageRequest.of(index, size, new Sort(getSortDirection(sortType), sortField));
+        //PageRequest pageRequest = new PageRequest(index, size, new Sort(getSortDirection(sortType), sortField));
         return repository.findAll(pageRequest);
     }
 

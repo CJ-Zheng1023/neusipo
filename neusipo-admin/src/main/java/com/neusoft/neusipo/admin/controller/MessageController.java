@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author: zhengchj
  * @create: 2019-11-21 16:15
  **/
-@RestController
-@RequestMapping("/message")
+/*@RestController
+@RequestMapping("/message")*/
 public class MessageController {
     @Autowired
     private RedisRepository redisRepository;

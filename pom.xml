@@ -32,6 +32,7 @@
         <shiro.version>1.3.2</shiro.version>
         <fastjson.version>1.2.47</fastjson.version>
         <rocketmq.version>4.5.1</rocketmq.version>
+        <pool2.version>2.4.2</pool2.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -113,9 +114,9 @@
                 <version>${springboot.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-quartz</artifactId>
-                <version>${springboot.version}</version>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${pool2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>

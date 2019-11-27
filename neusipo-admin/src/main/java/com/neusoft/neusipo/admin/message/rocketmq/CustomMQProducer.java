@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
  * @create: 2019-09-02 16:30
  **/
 @Slf4j
-@Component
+/*@Component*/
 public class CustomMQProducer extends AbstractMQProducer {
 }
